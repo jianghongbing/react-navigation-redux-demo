@@ -6,10 +6,8 @@ import {
 } from 'react-native'
 
 import { CounterButton } from './CounterButton'
-import { connect } from 'react-redux'
-import {increment, decrement, incrementIfOdd, asyncIncrement} from '../../redux/actions/counterActions'
 
-const Counter = ({count, increment, decrement, incrementIfOdd, asyncIncrement})=>(
+export const Counter = ({count, increment, decrement, incrementIfOdd, asyncIncrement})=>(
     <SafeAreaView style={styles.container}>
       <Text style={styles.text}>{count}</Text>
       <CounterButton
@@ -48,16 +46,3 @@ const styles = StyleSheet.create({
 Counter.navigationOptions = {
  title: 'Counter',
 }
-
-const mapStateToProps = (state)=>({
-  count: state.counterReducer
-})
-
-const mapDispatchToProps = (dispatch)=>({
-  increment: _=>dispatch(increment()),
-  decrement: _=>dispatch(decrement()),
-  incrementIfOdd: _=>dispatch(incrementIfOdd()),
-  asyncIncrement: (delay)=>()=>dispatch(asyncIncrement(delay))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Counter)

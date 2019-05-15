@@ -1,23 +1,25 @@
 import { createBottomTabNavigator, createAppContainer } from 'react-navigation'
-import { CounterNavigator } from './CounterNavigator'
 import { createReduxContainer } from 'react-navigation-redux-helpers'
 import { connect } from 'react-redux'
-import { StyleSheet } from 'react-native'
-const styles = StyleSheet.create({
-  labelStyle: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: 'red',
-    textAlign: 'center',
-    backgroundColor: 'black',
-  },
-  tabStyle: {
-    flex: 1,
-    height: 87,
-    justifyContent: 'center',
-    backgroundColor: 'orange',
-  },
-})
+// import { StyleSheet } from 'react-native'
+import { CounterNavigator } from './CounterNavigator'
+import { MovieNavigator } from './MovieNavigator'
+
+// const styles = StyleSheet.create({
+//   labelStyle: {
+//     fontSize: 20,
+//     fontWeight: 'bold',
+//     color: 'red',
+//     textAlign: 'center',
+//     backgroundColor: 'black',
+//   },
+//   tabStyle: {
+//     flex: 1,
+//     height: 87,
+//     justifyContent: 'center',
+//     backgroundColor: 'orange',
+//   },
+// })
 
 
 export const TabBarNavigator = createBottomTabNavigator({
@@ -26,12 +28,17 @@ export const TabBarNavigator = createBottomTabNavigator({
     navigationOptions: {
       title: 'Counter',
     }
-  }
+  },
+  MovieNavigator: {
+    screen: MovieNavigator,
+  },
+
+
 }, {
+  initialRouteName: 'CounterNavigator',
   tabBarOptions: {
     showIcon:false,
-    labelStyle: styles.labelStyle,
-    tabStyle: styles.tabStyle,
+    labelStyle: {fontSize: 20},
   },
 })
 
