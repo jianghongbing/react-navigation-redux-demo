@@ -35,7 +35,7 @@ export const TabBarNavigator = createBottomTabNavigator({
 
 
 }, {
-  initialRouteName: 'CounterNavigator',
+  initialRouteName: 'MovieNavigator',
   tabBarOptions: {
     showIcon:false,
     labelStyle: {fontSize: 20},
