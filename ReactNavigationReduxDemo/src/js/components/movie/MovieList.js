@@ -7,9 +7,11 @@ import {
 } from 'react-native'
 import { MovieItem } from './MovieItem'
 import { MovieListEmpty } from './MovieListEmpty'
-import {MovieListFooter} from './MovieListFooter'
+import { MovieListFooter } from './MovieListFooter'
+import { MovieDetail } from './MovieDetail'
 
 export class MovieList extends Component {
+
   componentDidMount(){
     this.props.loadMovies()
   }
@@ -20,7 +22,7 @@ export class MovieList extends Component {
         <SafeAreaView style={styles.container}>
           <FlatList
           data={items}
-          renderItem={this._renderItem}
+          renderItem={this._renderItem.bind(this)}
           keyExtractor={(item)=>item.id}
           initialNumToRender={20}
           ItemSeparatorComponent={this._renderSeparator}
@@ -36,8 +38,13 @@ export class MovieList extends Component {
   }
 
   _renderItem({item}){
-    return (<MovieItem {...item}/>)
+    return (<MovieItem {...item} onPress={()=>this._itemDidPress(item.id)}/>)
   }
+
+  _itemDidPress(movieId){
+    this.props.navigation.push('MovieDetail', {movieId})
+  }
+
   _renderSeparator(){
     return (<View style={styles.separator}/>)
   }

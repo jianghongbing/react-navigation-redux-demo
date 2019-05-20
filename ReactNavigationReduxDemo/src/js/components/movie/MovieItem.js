@@ -3,13 +3,20 @@ import {
     View,
     StyleSheet,
     Text,
+    TouchableHighlight,
 } from 'react-native'
 
-export const MovieItem = ({title, year})=>(
-    <View style={styles.container}>
-      <Text style={styles.title}>{title}</Text>
-      <Text style={styles.year}>{year}</Text>
-    </View>
+export const MovieItem = ({title, year, onPress})=>(
+    <TouchableHighlight
+        activeOpacity={0.8}
+        underlayColor='#eee'
+        onPress={onPress}
+    >
+      <View style={styles.container}>
+        <Text style={styles.title}>{title}</Text>
+        <Text style={styles.year}>{year}</Text>
+      </View>
+    </TouchableHighlight>
 )
 
 const styles = StyleSheet.create({
@@ -18,7 +25,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingVertical: 10,
+    paddingVertical: 12,
     paddingHorizontal: 15,
   },
 

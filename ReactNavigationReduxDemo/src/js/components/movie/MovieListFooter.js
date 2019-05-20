@@ -7,7 +7,6 @@ import {
 } from 'react-native'
 
 export const MovieListFooter = ({didLoadAllMovies})=> {
-  console.log(didLoadAllMovies)
   if (didLoadAllMovies) {
     return (<View style={styles.container}><Text style={styles.text}>{'已经加载完所有电影'}</Text></View>)
   } else {
