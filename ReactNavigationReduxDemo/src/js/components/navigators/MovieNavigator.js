@@ -13,6 +13,15 @@ export const MovieNavigator = createStackNavigator({
   initialRouteName: 'MovieList'
 })
 
-MovieNavigator.navigationOptions = {
-  title: 'Movie',
-}
+MovieNavigator.navigationOptions = ({ navigation }) => {
+  console.log(navigation)
+  let tabBarVisible = true;
+  if (navigation.state.index > 0) {
+    tabBarVisible = false;
+  }
+
+  return {
+    title: 'Movie',
+    tabBarVisible,
+  };
+};

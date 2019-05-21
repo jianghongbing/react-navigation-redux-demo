@@ -1,3 +1,4 @@
+
 import { createBottomTabNavigator, createAppContainer } from 'react-navigation'
 import { createReduxContainer } from 'react-navigation-redux-helpers'
 import { connect } from 'react-redux'
@@ -23,14 +24,15 @@ export const TabBarNavigator = createBottomTabNavigator({
     showIcon:false,
     labelStyle: {fontSize: 20},
   },
+
 })
 
 export const AppContainer = createAppContainer(TabBarNavigator)
 const AppReduxContainer = createReduxContainer(AppContainer)
 
-const mapToProps = (state)=>({
-  state: state.tabBarReducer,
-})
+const mapStateToProps = (state)=>{
+  return {state: {...state.tabBarReducer}}
+}
 
-export const AppWithNavigatorState = connect(mapToProps)(AppReduxContainer)
+export const AppWithNavigatorState = connect(mapStateToProps)(AppReduxContainer)
 
